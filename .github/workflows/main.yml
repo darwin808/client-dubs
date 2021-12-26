@@ -1,4 +1,4 @@
-name: CI
+name: CI dev
 on:
   push:
     branches: [dev]
@@ -15,11 +15,11 @@ jobs:
           node-version: "12.x"
       - name: Install NPM dependencies
         run: yarn install
-      - name: Configure AWS Credentials
+      - name: Configure AWS Credentials dev
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - name: Deploy Next.js app
+      - name: Deploy Next.js app in Dev
         run: npx serverless
