@@ -15,3 +15,5 @@ git cz
 
 - yarn dev
 - yarn build
+
+https://d349t6t1cpxk7s.cloudfront.net/
