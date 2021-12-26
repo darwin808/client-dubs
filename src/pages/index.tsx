@@ -1,7 +1,13 @@
 import type { NextPage } from "next"
 
 const Home: NextPage = () => {
-  return <div className="bg-red-200 h-screen">dev: https://d349t6t1cpxk7s.cloudfront.net/</div>
+  return (
+    <div className="bg-red-200 h-screen">
+      <a href="/b" className="underline text-lg">
+        /b
+      </a>
+    </div>
+  )
 }
 
 export default Home
