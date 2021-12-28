@@ -1,8 +1,8 @@
 const defaultTheme = require("tailwindcss/defaultTheme")
 
 module.exports = {
-  purge: ["./src/pages/**/*.{js,ts,jsx,tsx}", "./src/components/**/*.{js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  content: ["./src/pages/**/*.{js,ts,jsx,tsx}", "./src/components/**/*.{js,ts,jsx,tsx}"],
+  media: false, // or 'media' or 'class'
   theme: {
     maxHeight: {
       0: "0",
