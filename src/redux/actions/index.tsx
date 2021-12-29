@@ -5,7 +5,13 @@ const setPageData = createAction("SET_PAGE_DATA", (payload: string) => ({
 }))
 const clearPageData = createAction("CLEAR_PAGE_DATA")
 
+const setUserData = createAction("SET_USER_DATA", (payload: string) => ({
+  payload
+}))
+const clearUserData = createAction("CLEAR_USER_DATA")
 export const pageActions = {
   setPageData,
-  clearPageData
+  clearPageData,
+  setUserData,
+  clearUserData
 }

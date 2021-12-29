@@ -1,24 +1,30 @@
-import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit"
-// import { persistCombineReducers } from "reduxjs-toolkit-persist"
-// import { persistReducer } from "redux-persist"
-// import storage from "redux-persist/lib/storage"
-import { tokenReducer } from "../redux/reducers/auth"
-import { pageReducer } from "../redux/reducers"
+/* eslint-disable spaced-comment */
+import { Action, combineReducers, configureStore, ThunkAction } from "@reduxjs/toolkit"
+import { pageReducer, userReducer } from "../redux/reducers"
+import { persistStore, persistReducer } from "redux-persist"
+import storage from "redux-persist/lib/storage" // defaults to localStorage for web
 
-// const persistConfig = {
-//   key: "root",
-//   storage,
-//   blacklist: [],
-//   whitelist: ["user", "filters"]
-// }
-const reducer = {
-  token: tokenReducer,
-  page: pageReducer
+const persistConfig = {
+  key: "root",
+  storage
 }
-// const persistedReducer = persistReducer(persistConfig, reducer.token)
-export const store = configureStore({
-  reducer
+
+const reducer = combineReducers({
+  page: pageReducer,
+  user: userReducer
 })
+const persistedReducer = persistReducer(persistConfig, reducer)
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  devTools: process.env.NODE_ENV !== "production",
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false
+    })
+})
+
+export const persistor = persistStore(store)
 
 export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof store.getState>

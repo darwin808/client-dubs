@@ -1,37 +1,44 @@
+/* eslint-disable camelcase */
 import React from "react"
-import axios from "axios"
+import { Api } from "../../config"
+import { useAppSelector } from "../../redux/hooks"
+import { RootState } from "../../redux/store"
 
-const api = process.env.NEXT_PUBLIC_API
 const FormComponent = () => {
   const [title, settitle] = React.useState<string>("")
   const [post, setpost] = React.useState<string>("")
   const [loading, setloading] = React.useState(false)
 
+  const user: any = useAppSelector((e: RootState) => e?.user) || ""
+  const user_id: number = user?.newUser?.id
+
+  React.useEffect(() => {
+    console.log(user, "user123")
+  }, [user])
   const handleSubmit = async (e: any) => {
     e.preventDefault()
     setloading(true)
     const payload = {
       title,
       post,
-      user_id: 1,
-      media: ["none"],
+      user_id,
+      media: [],
       like: 1,
       dislike: 2,
       thread_id: 33,
       page_id: 2
     }
-    const response = await axios.post(`${api}/post`, payload)
+
+    const response = await Api.post(`/post`, payload)
 
     response.status === 200 && handlePostSuccess(response.data)
     response.status !== 200 && handlePostError(response)
   }
 
   const handlePostSuccess = (data: any) => {
-    console.log(data)
     setloading(false)
   }
   const handlePostError = (error: any) => {
-    console.log(error)
     setloading(false)
   }
   return (
