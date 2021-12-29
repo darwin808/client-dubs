@@ -3,6 +3,7 @@ import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit"
 // import { persistReducer } from "redux-persist"
 // import storage from "redux-persist/lib/storage"
 import { tokenReducer } from "../redux/reducers/auth"
+import { pageReducer } from "../redux/reducers"
 
 // const persistConfig = {
 //   key: "root",
@@ -11,7 +12,8 @@ import { tokenReducer } from "../redux/reducers/auth"
 //   whitelist: ["user", "filters"]
 // }
 const reducer = {
-  token: tokenReducer
+  token: tokenReducer,
+  page: pageReducer
 }
 // const persistedReducer = persistReducer(persistConfig, reducer.token)
 export const store = configureStore({
