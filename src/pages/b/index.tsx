@@ -4,35 +4,33 @@ import { useAppDispatch } from "../../redux/hooks"
 import { pageActions } from "../../redux/actions"
 import useSWR from "swr"
 import { useRouter } from "next/router"
+import { helper } from "../../utils"
+import { fetcher } from "../../services"
 
 const api = process.env.NEXT_PUBLIC_API
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json())
-const switchPages = (page: string) => {
-  switch (page) {
-    case "/b":
-      return 2
-    default:
-      return 1
-  }
-}
 const b = () => {
   const { pathname } = useRouter()
-
   const dispatch = useAppDispatch()
-  const { data, error } = useSWR(`${api}/page/${switchPages(pathname)}`, fetcher)
+  const url: string = `${api}/thread/${helper.switchPages(pathname)}`
+
+  const { data, error } = useSWR(url, fetcher)
 
   if (error) return "An error has occurred."
   if (!data) return "Loading..."
 
-  dispatch(pageActions.setPageData(data.allPosts))
+  const { thread } = data || ""
+  dispatch(pageActions.setPageData(thread))
+
   return (
     <div className="bg-GreyColor px-20 py-10 relative scroll-smooth min-h-screen w-full">
-      <Ui.FormComponent />
       <div className="block text-center">
         <div className="text-3xl font-bold  text-red-400">/b Random</div>
       </div>
-      <Ui.PostsContainer posts={data.allPosts} />
+      <div className="h-auto w-full flex justify-center e">
+        <Ui.FormComponent />
+      </div>
+      <Ui.PostsContainer data={thread} />
     </div>
   )
 }

@@ -10,13 +10,15 @@ const FormComponent = () => {
   const [title, settitle] = React.useState<string>("")
   const [message, setmessage] = React.useState<string>("")
   const [loading, setloading] = React.useState(false)
-
+  const router = useRouter()
   const { pathname } = useRouter()
   const user: any = useAppSelector((e: RootState) => e?.user) || ""
   const user_id: number = user?.newUser?.id
+  const thread_id = Number(router.query.id)
+  console.log(router)
 
   React.useEffect(() => {
-    console.log(user, "user123")
+    console.log(user, pathname.slice(0, 2), "user123")
   }, [user])
   const handleSubmit = async (e: any) => {
     e.preventDefault()
@@ -24,20 +26,23 @@ const FormComponent = () => {
     const payload = {
       title,
       message,
-      page_id: helper.switchPages(pathname),
-      user_id
+      page_id: helper.switchPages(pathname.slice(0, 2)),
+      user_id,
+      thread_id
     }
 
-    const response = await Api.post(`/thread`, payload)
+    const response = await Api.post("/posts", payload)
 
     response.status === 200 && handlePostSuccess(response.data)
     response.status !== 200 && handlePostError(response)
   }
 
   const handlePostSuccess = (data: any) => {
+    console.log(data)
     setloading(false)
   }
   const handlePostError = (error: any) => {
+    console.log(error)
     setloading(false)
   }
   console.log(loading)

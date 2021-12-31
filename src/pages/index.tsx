@@ -6,18 +6,16 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks"
 import { pageActions } from "../redux/actions"
 import { RootState } from "../redux/store"
 
-const anonEmail = `anonymous- ${uuidv4()}`
+const username = `anonymous- ${uuidv4()}`
 
 const Home: NextPage = () => {
   const dispatch = useAppDispatch()
   const user = useAppSelector((e: RootState) => e.user)
   const payload = {
-    username: "Anonymouse",
-    password: "123",
-    email: anonEmail
+    username
   }
   const loginAnon = async () => {
-    const user = await Api.post("/register", payload)
+    const user = await Api.post("/user", payload)
 
     user && dispatch(pageActions.setUserData(user.data))
   }
