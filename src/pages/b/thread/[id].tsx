@@ -1,43 +1,30 @@
-import axios from "axios"
+import { useRouter } from "next/router"
 import React from "react"
+import useSWR from "swr"
+import { Ui } from "../../../components/Ui"
+import { fetcher } from "../../../services"
 
 const api = process.env.NEXT_PUBLIC_API
 
-export async function getServerSideProps(context: any) {
-  const threadId = context.query.id
+const ThreadPage = () => {
+  const router = useRouter()
+  const { id } = router.query
+  const url: string = `${api}/posts/${id}`
+  const { data, error } = useSWR(url, fetcher)
 
-  //   const switchPages = (page: string) => {
-  //     switch (page) {
-  //       case "/b":
-  //         return 2
-  //       default:
-  //         return 1
-  //     }
-  //   }
-  const res = await axios.get(`${api}/thread/${threadId}`)
-
-  if (!res.data) {
-    return {
-      notFound: true
-    }
-  }
-
-  return {
-    props: { data: res.data } // will be passed to the page component as props
-  }
-}
-interface IProps {
-  data: any
-}
-const ThreadId = ({ data }: IProps) => {
+  if (error) return "An error has occurred."
+  if (!data) return "Loading..."
   return (
     <div className="h-screen bg-fuchsia-100 w-full">
       <h2>
         <a href="/b"> /b</a>
       </h2>
-      <h1>lskjdfa;sldkjfa;lskdjf</h1>
+
+      <Ui.FormComponentv2 />
+      <Ui.Post data={router.query} />
+      <Ui.PostsContainer data={data.posts} />
     </div>
   )
 }
 
-export default ThreadId
+export default ThreadPage

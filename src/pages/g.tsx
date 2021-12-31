@@ -26,7 +26,7 @@ const g = ({ data }: any) => {
     <div className="bg-green-200 relative scroll-smooth h-screen w-full">
       <Ui.FormComponent />
       <h1>Tech</h1>
-      <Ui.PostsContainer posts={data.allPosts} />
+      <Ui.PostsContainer data={data.allPosts} />
     </div>
   )
 }
