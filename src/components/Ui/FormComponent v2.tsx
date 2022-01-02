@@ -1,15 +1,12 @@
 /* eslint-disable camelcase */
-import Image from "next/image"
 import { useRouter } from "next/router"
 import React from "react"
 import { useSWRConfig } from "swr"
-import { assets } from "../../assets"
 import { api, Api } from "../../config"
 import { useAppSelector } from "../../redux/hooks"
 import { RootState } from "../../redux/store"
 import { helper } from "../../utils"
 import Button from "../Button"
-import Modal from "../Modal"
 import Loader from "./Loader"
 
 const FormComponent = () => {
