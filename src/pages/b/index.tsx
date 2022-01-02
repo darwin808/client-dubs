@@ -22,9 +22,9 @@ const b = () => {
   dispatch(pageActions.setPageData(thread))
 
   return (
-    <div className={`bg-gray-800 px-20 py-10 relative scroll-smooth min-h-screen w-full`}>
+    <div className={`Page`}>
       <div className="block text-center">
-        <div className="text-3xl font-bold  text-red-400">/b Random</div>
+        <div className="text-3xl font-bold  text-red-400 ">/b Random</div>
       </div>
       <div className="h-auto w-full flex justify-center e">
         <Ui.FormComponent />

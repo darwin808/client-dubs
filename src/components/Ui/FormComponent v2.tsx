@@ -59,23 +59,23 @@ const FormComponent = () => {
     console.log(media)
   }, [media])
   return (
-    <form
-      action="submit"
-      onSubmit={handleSubmit}
-      className="bg-yellow-200 p-4 gap-4 flex flex-col w-96"
-    >
+    <form action="submit" onSubmit={handleSubmit} className="Forms">
       {loading && <Loader />}
 
       <h1>Post</h1>
       <input
         name="title"
         type="text"
+        placeholder="Title"
+        className="Inputs"
         value={title}
         onChange={(e: any) => settitle(e.target.value)}
       />
       <textarea
         id="post"
         name="post"
+        placeholder="Message"
+        className="Inputs"
         rows={4}
         cols={30}
         value={message}
