@@ -6,8 +6,7 @@ import useSWR from "swr"
 import { useRouter } from "next/router"
 import { helper } from "../../utils"
 import { fetcher } from "../../services"
-
-const api = process.env.NEXT_PUBLIC_API
+import { api } from "../../config"
 
 const b = () => {
   const { pathname } = useRouter()
@@ -23,7 +22,7 @@ const b = () => {
   dispatch(pageActions.setPageData(thread))
 
   return (
-    <div className="bg-GreyColor px-20 py-10 relative scroll-smooth min-h-screen w-full">
+    <div className={`bg-gray-800 px-20 py-10 relative scroll-smooth min-h-screen w-full`}>
       <div className="block text-center">
         <div className="text-3xl font-bold  text-red-400">/b Random</div>
       </div>
