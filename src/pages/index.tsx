@@ -27,7 +27,7 @@ const Home: NextPage = () => {
     console.log(user, "index user")
   }, [user])
   return (
-    <div className="bg-red-200 h-screen">
+    <div className="bg-red-200 h-screen ">
       <a href="/b" className="underline text-lg">
         /b
       </a>

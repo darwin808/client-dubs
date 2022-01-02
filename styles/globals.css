@@ -17,3 +17,14 @@ a {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.Page {
+  @apply bg-gray-800 px-20 py-10 relative scroll-smooth  min-h-100vh w-full overflow-y-auto flex flex-col font-FiraSans;
+}
+.Inputs {
+  @apply py-1 px-2 outline-none ring-transparent focus:ring-purple-400 ring-offset-2 ring-4 transform transition-all rounded-sm;
+}
+
+.Forms {
+  @apply bg-gray-600 p-4 gap-4 flex flex-col w-96;
+}

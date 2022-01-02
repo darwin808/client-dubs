@@ -19,6 +19,10 @@ module.exports = {
       "3/4": "75%",
       full: "100%"
     },
+    minHeight: {
+      "10rem": "10rem",
+      "100vh": "100vh"
+    },
     maxWidth: {
       "20rem": "20rem"
     },
@@ -129,6 +133,7 @@ module.exports = {
         yellowGreen: "#5b8e55"
       },
       fontFamily: {
+        FiraSans: ["Fira Sans"],
         PoppinsMedium: ["Poppins Medium"],
         PoppinsLight: ["Poppins Light"],
         PoppinsRegular: ["Poppins Regular"],

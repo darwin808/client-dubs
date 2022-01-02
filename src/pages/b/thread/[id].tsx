@@ -15,7 +15,7 @@ const ThreadPage = () => {
   if (error) return "An error has occurred."
   if (!data) return "Loading..."
   return (
-    <div className="min-h-screen bg-fuchsia-100 w-full">
+    <div className="Page">
       <h2>
         <a href="/b"> /b</a>
       </h2>
