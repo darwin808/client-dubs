@@ -3,8 +3,6 @@ import { useRouter } from "next/router"
 import React from "react"
 import { useSWRConfig } from "swr"
 import { api, Api } from "../../config"
-import { useAppSelector } from "../../redux/hooks"
-import { RootState } from "../../redux/store"
 import { helper } from "../../utils"
 import Button from "../Button"
 import Loader from "./Loader"
@@ -18,8 +16,6 @@ const FormComponent = () => {
   const [loading, setloading] = React.useState<boolean>(false)
   const [media, setmedia] = React.useState<any>("")
 
-  const user: any = useAppSelector((e: RootState) => e?.user) || ""
-  const user_id: number = user?.newUser?.id
   const url: string = `${api}/thread/${helper.switchPages(pathname)}`
   const page_id: number = helper.switchPages(pathname)
 
@@ -31,7 +27,6 @@ const FormComponent = () => {
       title,
       message,
       page_id,
-      user_id,
       media
     }
 
@@ -47,16 +42,13 @@ const FormComponent = () => {
   }
 
   const handlePostSuccess = (data: any) => {
+    console.log(data)
     setloading(false)
   }
   const handlePostError = (error: any) => {
+    console.log(error)
     setloading(false)
   }
-  console.log(loading)
-
-  React.useEffect(() => {
-    console.log(media)
-  }, [media])
 
   return (
     <form action="submit" onSubmit={handleSubmit} className="Forms">

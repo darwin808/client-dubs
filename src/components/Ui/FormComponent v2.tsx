@@ -3,8 +3,6 @@ import { useRouter } from "next/router"
 import React from "react"
 import { useSWRConfig } from "swr"
 import { api, Api } from "../../config"
-import { useAppSelector } from "../../redux/hooks"
-import { RootState } from "../../redux/store"
 import { helper } from "../../utils"
 import Button from "../Button"
 import Loader from "./Loader"
@@ -19,8 +17,6 @@ const FormComponent = () => {
   const [loading, setloading] = React.useState<boolean>(false)
   const [media, setmedia] = React.useState<any>("")
 
-  const user: any = useAppSelector((e: RootState) => e?.user) || ""
-  const user_id: number = user?.newUser?.id
   const page_id: number = helper.switchPages(pathname)
   const thread_id = Number(router.query.id)
   const url: string = `${api}/posts/${thread_id}`
@@ -33,7 +29,6 @@ const FormComponent = () => {
       title,
       message,
       page_id,
-      user_id,
       thread_id,
       media
     }
@@ -43,26 +38,23 @@ const FormComponent = () => {
     response.status === 200 && handlePostSuccess(response.data)
     response.status !== 200 && handlePostError(response)
 
-    console.log(url)
     mutate(url)
   }
 
   const handlePostSuccess = (data: any) => {
+    console.log(data)
     setloading(false)
   }
   const handlePostError = (error: any) => {
+    console.log(error)
     setloading(false)
   }
-  console.log(loading)
 
-  React.useEffect(() => {
-    console.log(media)
-  }, [media])
   return (
     <form action="submit" onSubmit={handleSubmit} className="Forms">
       {loading && <Loader />}
 
-      <h1>Post</h1>
+      <h1 className="text-center text-3xl font-bold text-white">Create a Post</h1>
       <input
         name="title"
         type="text"
