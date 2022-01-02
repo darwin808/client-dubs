@@ -15,12 +15,14 @@ const ThreadPage = () => {
   if (error) return "An error has occurred."
   if (!data) return "Loading..."
   return (
-    <div className="h-screen bg-fuchsia-100 w-full">
+    <div className="min-h-screen bg-fuchsia-100 w-full">
       <h2>
         <a href="/b"> /b</a>
       </h2>
 
-      <Ui.FormComponentv2 />
+      <div className="w-full flex justify-center">
+        <Ui.FormComponentv2 />
+      </div>
       <Ui.Post data={router.query} />
       <Ui.PostsContainer data={data.posts} />
     </div>
