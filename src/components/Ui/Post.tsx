@@ -46,4 +46,4 @@ const Post = ({ data }: IPost) => {
     </div>
   )
 }
-export default Post
+export default React.memo(Post)

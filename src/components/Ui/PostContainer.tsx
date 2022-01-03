@@ -14,4 +14,4 @@ const PostsContainer = ({ data }: IPostContainer) => {
   return <div>{showPosts}</div>
 }
 
-export default PostsContainer
+export default React.memo(PostsContainer)

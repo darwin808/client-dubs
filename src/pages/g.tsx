@@ -24,7 +24,7 @@ const g = ({ data }: any) => {
   console.log(data)
   return (
     <div className="bg-green-200 relative scroll-smooth h-screen w-full">
-      <Ui.FormComponent />
+      {/* <Ui.FormComponent /> */}
       <h1>Tech</h1>
       <Ui.PostsContainer data={data.allPosts} />
     </div>

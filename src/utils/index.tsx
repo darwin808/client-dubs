@@ -1,3 +1,5 @@
+import { IQueries } from "../types"
+
 const switchPages = (page: string) => {
   switch (page) {
     case "/b":
@@ -15,7 +17,20 @@ const toBase64 = async (file: any) =>
     }
     reader.onerror = (error) => reject(error)
   })
+const generateQuery = (queries: IQueries[]) => {
+  // const queries = [
+  //   { name: "page", value: 1 },
+  //   { name: "perPage", value: 10 }
+  // ]
+  const parameters = new URLSearchParams()
+
+  queries.map((e: any) => {
+    e?.value && parameters.append(e.name, e.value)
+  })
+  return parameters.toString()
+}
 export const helper = {
   switchPages,
-  toBase64
+  toBase64,
+  generateQuery
 }

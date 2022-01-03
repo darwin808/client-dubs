@@ -3028,7 +3028,7 @@ progress@^2.0.0:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-prop-types@^15.7.2:
+prop-types@^15.6.1, prop-types@^15.7.2:
   version "15.8.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.0.tgz#d237e624c45a9846e469f5f31117f970017ff588"
   integrity sha512-fDGekdaHh65eI3lMi5OnErU6a8Ighg2KjcjQxO7m8VHyWjcPyj5kiOgV1LQDOOOgVy3+5FgjXvdSSX7B8/5/4g==
@@ -3139,6 +3139,13 @@ react-modal@^3.14.4:
     prop-types "^15.7.2"
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
+
+react-paginate@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/react-paginate/-/react-paginate-8.1.0.tgz#8c4c6c5b7d90e8a4f33653262204fd32c5dfd207"
+  integrity sha512-XK8cgcX8Zk4De6F4Iozd91a2xm/U+mdD4SB5k4xcBabqZj86U20N7kMiMzOFk1AEGCj6Kg1374xXK03dz7BTRA==
+  dependencies:
+    prop-types "^15.6.1"
 
 react-redux@^7.2.6:
   version "7.2.6"
