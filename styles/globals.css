@@ -28,3 +28,7 @@ a {
 .Forms {
   @apply bg-gray-600 p-4 gap-4 flex flex-col w-96;
 }
+
+.Heading1 {
+  @apply text-3xl font-bold  text-red-400;
+}
