@@ -19,6 +19,7 @@ const b = () => {
   const [title, settitle] = React.useState<string>("")
   const [message, setmessage] = React.useState<string>("")
   const [media, setmedia] = React.useState<any>("")
+  // const [data, setdata] = React.useState<any>("")
   const [loading, setloading] = React.useState<boolean>(false)
   const { pathname } = useRouter()
   const dispatch = useAppDispatch()
@@ -95,7 +96,7 @@ const b = () => {
         />
       </div>
       <Ui.PostsContainer data={thread} />
-      <Ui.Pagination onPageChange={handlePageClick} pageCount={data.lastPage} />
+      <Ui.Pagination page={page} onPageChange={handlePageClick} pageCount={data.lastPage} />
     </div>
   )
 }

@@ -4,10 +4,12 @@ import ReactPaginate from "react-paginate"
 interface IProps {
   onPageChange: (e: any) => void
   pageCount: number
+  page: number
 }
-const Pagination = ({ onPageChange, pageCount }: IProps) => {
+const Pagination = ({ page, onPageChange, pageCount }: IProps) => {
   return (
     <ReactPaginate
+      forcePage={page - 1}
       breakLabel="..."
       nextLabel="Next"
       onPageChange={onPageChange}
