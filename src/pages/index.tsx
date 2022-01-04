@@ -9,10 +9,15 @@ const Home: NextPage = () => {
     console.log(user, "index user")
   }, [user])
   return (
-    <div className="bg-red-200 h-screen ">
-      <a href="/b" className="underline text-lg">
-        /b
-      </a>
+    <div className="bg-gray-600 h-screen flex-col  justify-center flex items-center font-FiraSans ">
+      <div className="uppercase  text-5xl font-bold text-red-600">
+        under maintenance please proceed to
+      </div>
+      <div>
+        <a href="/b" className="underline text-4xl text-purple-600">
+          /b
+        </a>
+      </div>
     </div>
   )
 }

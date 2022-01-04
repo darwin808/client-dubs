@@ -49,6 +49,9 @@ const ThreadPage = () => {
     response.status !== 200 && handlePostError(response)
 
     mutate(uri)
+    settitle("")
+    setmessage("")
+    setmedia("")
   }
 
   const handlePostSuccess = (data: any) => {
