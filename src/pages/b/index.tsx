@@ -78,12 +78,12 @@ const b = () => {
     <div className={`Page`}>
       {loading && <Loader />}
       <div className="block text-center">
-        <div className=" flex w-full justify-center">
+        <div className=" flex w-full justify-center mb-4">
           <img src={RANDOM_PIC} alt="" />
         </div>
         <div className="Heading1">/b Random</div>
       </div>
-      <div className=" h-auto w-full flex justify-center e">
+      <div className=" h-auto w-full flex justify-center my-2">
         <Ui.FormComponent
           heading={"Create a Thread"}
           handleSubmit={handleSubmit}

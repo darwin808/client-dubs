@@ -24,7 +24,7 @@ const Post = ({ data }: IPost) => {
         <span className="font-semibold">Anonymous</span>
         <span className="">{moment(createdAt).format("MM/DD/YY (ddd) HH:mm:ss")}</span>
         <span>No. {id}</span>
-        <div className="w-24">
+        <div className="w-20">
           <Button onClick={handleClick}>Reply</Button>
         </div>
       </div>

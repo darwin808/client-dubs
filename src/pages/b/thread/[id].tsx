@@ -72,7 +72,7 @@ const ThreadPage = () => {
 
       <div className="w-full flex justify-center">
         <Ui.FormComponent
-          heading={"Create a Thread"}
+          heading={"Create a Post"}
           handleSubmit={handleSubmit}
           title={title}
           settitle={settitle}
