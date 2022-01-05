@@ -28,7 +28,7 @@ const Post = ({ data }: IPost) => {
           <Button onClick={handleClick}>Reply</Button>
         </div>
       </div>
-      <div className=" flex my-2 ">
+      <div className={`flex my-2 ${toggleImage ? "flex-col" : "flex-row"}  `}>
         <div className="flex h-full w-auto ">
           <img
             loading="eager"
