@@ -9,9 +9,19 @@ const setUserData = createAction("SET_USER_DATA", (payload: string) => ({
   payload
 }))
 const clearUserData = createAction("CLEAR_USER_DATA")
+const addSelectedThread = createAction("ADD_SELECTED_THREAD", (payload: string) => ({
+  payload
+}))
+const deleteSelectedThread = createAction("DELETE_SELECTED_THREAD", (payload: string) => ({
+  payload
+}))
+const clearSelectedThreads = createAction("CLEAR_SELECTED_THREADS")
 export const pageActions = {
   setPageData,
   clearPageData,
   setUserData,
-  clearUserData
+  clearUserData,
+  addSelectedThread,
+  deleteSelectedThread,
+  clearSelectedThreads
 }

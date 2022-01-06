@@ -78,7 +78,7 @@ const b = () => {
     <div className={`Page`}>
       {loading && <Loader />}
       <div className="block text-center">
-        <div className=" flex w-full justify-center mb-4">
+        <div className=" flex w-full justify-center mb-4 h-24">
           <img src={RANDOM_PIC} alt="" />
         </div>
         <div className="Heading1">/b Random</div>

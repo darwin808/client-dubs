@@ -3,23 +3,36 @@ import { useRouter } from "next/router"
 import React from "react"
 import Button from "../Button"
 import moment from "moment"
-
+import { useAppDispatch, useAppSelector } from "../../redux/hooks"
+import { pageActions } from "../../redux/actions/index"
+import { RootState } from "../../redux/store"
 interface IPost {
   data: any
 }
 const Post = ({ data }: IPost) => {
+  const dispatch = useAppDispatch()
+  const selectedIds = useAppSelector((e: RootState) => e.selected)
   const [toggleImage, settoggleImage] = React.useState<boolean>(false)
   const { id, title, message, user_id, media, media_small, createdAt } = data || ""
   const { push } = useRouter()
 
+  const [selected, setselected] = React.useState(false)
   const handleClick = () => {
     push({ pathname: `/b/thread/${id}`, query: { title, message, user_id, media, media_small } })
   }
-  console.log(data)
+  const handleChecked = (checked: boolean, id: string) => {
+    setselected(checked)
+    dispatch(pageActions.addSelectedThread(id))
+  }
+  console.log(selectedIds, "darwin")
   return (
-    <div className=" p-4  cursor-pointer rounded-sm flex  my-2 text-sm  bg-gray-600 h-auto w-full flex-col">
+    <div className="PostMain">
       <div className="text-white header flex items-center gap-2">
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          checked={selected}
+          onChange={(e: any) => handleChecked(e.target.checked, id)}
+        />
         <span className="text-red-300 underline">/{title}</span>
         <span className="font-semibold">Anonymous</span>
         <span className="">{moment(createdAt).format("MM/DD/YY (ddd) HH:mm:ss")}</span>
