@@ -25,6 +25,7 @@ const Modal = ({ children, isOpen, onRequestClose, id }: IModal) => {
   return (
     <ReactModal
       id={id}
+      ariaHideApp={false}
       // @ts-ignore
       style={customStyles}
       isOpen={isOpen}

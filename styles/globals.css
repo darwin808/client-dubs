@@ -19,7 +19,7 @@ a {
 @tailwind utilities;
 
 .Page {
-  @apply bg-gray-800 px-20 py-10 relative scroll-smooth  min-h-100vh w-full overflow-y-auto flex flex-col font-FiraSans;
+  @apply bg-gray-800 px-20 py-10 relative scroll-smooth  gap-4 min-h-100vh w-full overflow-y-auto flex flex-col font-FiraSans;
 }
 .Inputs {
   @apply py-1 px-2 outline-none ring-transparent focus:ring-purple-400 ring-offset-2 ring-4 transform transition-all rounded-sm;
@@ -31,4 +31,7 @@ a {
 
 .Heading1 {
   @apply text-3xl font-bold  text-red-400;
+}
+.PostMain {
+  @apply p-4  cursor-pointer rounded-sm flex  my-2 text-sm  bg-gray-600 h-auto w-full flex-col;
 }

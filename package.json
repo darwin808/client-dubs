@@ -29,6 +29,7 @@
     "react-redux": "^7.2.6",
     "redux-persist": "^6.0.0",
     "reduxjs-toolkit-persist": "^7.0.7",
+    "sweetalert2": "^11.3.3",
     "swr": "^1.1.1",
     "uuid": "^8.3.2"
   },
