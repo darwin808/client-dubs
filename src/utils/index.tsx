@@ -29,8 +29,19 @@ const generateQuery = (queries: IQueries[]) => {
   })
   return parameters.toString()
 }
+const handleChecked = (
+  checked: boolean,
+  id: string,
+  dispatch: any,
+  setselected: (e: any) => any,
+  pageActions: any
+) => {
+  setselected(checked)
+  dispatch(pageActions.addSelectedThread(id))
+}
 export const helper = {
   switchPages,
   toBase64,
-  generateQuery
+  generateQuery,
+  handleChecked
 }
