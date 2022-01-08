@@ -73,7 +73,6 @@ const b = () => {
       onUploadProgress: (e: any) => {
         const { loaded, total } = e
         setpercent((loaded / total) * 100)
-        console.log(`${(loaded / total) * 100}`)
       }
     }
     const response = await Api.post(`/thread`, payload, options)
