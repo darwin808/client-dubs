@@ -1,25 +1,14 @@
 import React from "react"
 import ReactPaginate from "react-paginate"
-import { Api } from "../../config"
-import { useAppSelector } from "../../redux/hooks"
-import { RootState } from "../../redux/store"
 import Button from "../Button"
 
 interface IProps {
   onPageChange: (e: any) => void
   pageCount: number
   page: number
+  onClickDelete: () => void
 }
-const Pagination = ({ page, onPageChange, pageCount }: IProps) => {
-  const selectedIds: any = useAppSelector((e: RootState) => e.selected)
-  const handleDelete = async () => {
-    selectedIds &&
-      selectedIds?.map(async (id: any) => {
-        const res = await Api.delete("/thread/" + id)
-        res.status === 200 && console.log(res)
-        res.status !== 200 && console.log(res)
-      })
-  }
+const Pagination = ({ onClickDelete, page, onPageChange, pageCount }: IProps) => {
   return (
     <div className="flex w-full  flex-row items-center justify-between ">
       <ReactPaginate
@@ -39,7 +28,7 @@ const Pagination = ({ page, onPageChange, pageCount }: IProps) => {
         activeLinkClassName="font-black text-purple-400"
       />
       <div>
-        <Button onClick={handleDelete}>DELETE</Button>
+        <Button onClick={onClickDelete}>DELETE</Button>
       </div>
     </div>
   )

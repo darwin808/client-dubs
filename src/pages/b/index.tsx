@@ -2,7 +2,7 @@
 /* eslint-disable camelcase */
 import React from "react"
 import { Ui } from "../../components/Ui"
-import { useAppDispatch } from "../../redux/hooks"
+import { useAppDispatch, useAppSelector } from "../../redux/hooks"
 import { pageActions } from "../../redux/actions"
 import useSWR, { mutate } from "swr"
 import { useRouter } from "next/router"
@@ -12,8 +12,13 @@ import { Api, api } from "../../config"
 import Loader from "../../components/Ui/Loader"
 import { RANDOM_PIC } from "../../constants"
 import { IQueries } from "../../types"
+import { RootState } from "../../redux/store"
+import { LoadingBar } from "../../components/Ui/styles"
 
 const b = () => {
+  const selectedIds: any = useAppSelector((e: RootState) => e.selected)
+  const [percent, setpercent] = React.useState(0)
+
   const [page, setpage] = React.useState(1)
   const [perPage, _setperPage] = React.useState(5)
   const [title, settitle] = React.useState<string>("")
@@ -35,9 +40,18 @@ const b = () => {
 
   if (error) return "An error has occurred."
   if (!data) return <Loader />
-
   const { thread } = data || ""
+
   dispatch(pageActions.setPageData(thread))
+
+  const handleDelete = async () => {
+    selectedIds &&
+      selectedIds?.map(async (id: any) => {
+        const res = await Api.delete("/thread/" + id)
+        res.status === 200 && console.log(res)
+        res.status !== 200 && console.log(res)
+      })
+  }
 
   const handlePageClick = (data: any) => {
     const { selected } = data
@@ -55,7 +69,14 @@ const b = () => {
       media
     }
 
-    const response = await Api.post(`/thread`, payload)
+    const options = {
+      onUploadProgress: (e: any) => {
+        const { loaded, total } = e
+        setpercent((loaded / total) * 100)
+        console.log(`${(loaded / total) * 100}`)
+      }
+    }
+    const response = await Api.post(`/thread`, payload, options)
 
     response.status === 200 && handlePostSuccess(response.data)
     response.status !== 200 && handlePostError(response)
@@ -76,7 +97,7 @@ const b = () => {
   }
   return (
     <div className={`Page`}>
-      {loading && <Loader />}
+      {loading && <Loader percent={percent} />}
       <div className="block text-center">
         <div className=" flex w-full justify-center mb-4 h-24">
           <img src={RANDOM_PIC} alt="" />
@@ -96,7 +117,12 @@ const b = () => {
         />
       </div>
       <Ui.PostsContainer data={thread} />
-      <Ui.Pagination page={page} onPageChange={handlePageClick} pageCount={data.lastPage} />
+      <Ui.Pagination
+        onClickDelete={handleDelete}
+        page={page}
+        onPageChange={handlePageClick}
+        pageCount={data.lastPage}
+      />
     </div>
   )
 }

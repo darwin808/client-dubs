@@ -19,7 +19,7 @@ const FormComponent = ({
     if (data.size > 2000000) {
       Swal.fire({
         icon: "error",
-        title: "Image file size error",
+        title: "File size error",
         text: "Try Again"
       })
       return null
@@ -52,6 +52,7 @@ const FormComponent = ({
         className="text-white "
         type="file"
         onChange={(e: any) => handleMedia(e.target.files[0])}
+        accept="video/*,image/*"
       />
 
       <Button type="submit" disabled={!title && !message && !media}>

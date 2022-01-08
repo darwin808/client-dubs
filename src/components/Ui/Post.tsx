@@ -3,15 +3,17 @@ import { useRouter } from "next/router"
 import React from "react"
 import Button from "../Button"
 import moment from "moment"
-import { useAppDispatch, useAppSelector } from "../../redux/hooks"
+import { useAppDispatch } from "../../redux/hooks"
 import { pageActions } from "../../redux/actions/index"
-import { RootState } from "../../redux/store"
+import { helper } from "../../utils"
+import ReactPlayer from "react-player"
+
 interface IPost {
   data: any
 }
+
 const Post = ({ data }: IPost) => {
   const dispatch = useAppDispatch()
-  const selectedIds = useAppSelector((e: RootState) => e.selected)
   const [toggleImage, settoggleImage] = React.useState<boolean>(false)
   const { id, title, message, user_id, media, media_small, createdAt } = data || ""
   const { push } = useRouter()
@@ -20,18 +22,35 @@ const Post = ({ data }: IPost) => {
   const handleClick = () => {
     push({ pathname: `/b/thread/${id}`, query: { title, message, user_id, media, media_small } })
   }
-  const handleChecked = (checked: boolean, id: string) => {
-    setselected(checked)
-    dispatch(pageActions.addSelectedThread(id))
-  }
-  console.log(selectedIds, "darwin")
+
+  const isMediaImage =
+    media_small.length > 0 ? (
+      <img
+        loading="eager"
+        onClick={() => settoggleImage(!toggleImage)}
+        src={toggleImage ? media : media_small}
+        alt=""
+      />
+    ) : (
+      <ReactPlayer
+        controls={true}
+        url={media}
+        muted={true}
+        playing={false}
+        loop={true}
+        width={"300px"}
+        height={"250px"}
+      />
+    )
   return (
     <div className="PostMain">
       <div className="text-white header flex items-center gap-2">
         <input
           type="checkbox"
           checked={selected}
-          onChange={(e: any) => handleChecked(e.target.checked, id)}
+          onChange={(e: any) =>
+            helper.handleChecked(e.target.checked, id, dispatch, setselected, pageActions)
+          }
         />
         <span className="text-red-300 underline">/{title}</span>
         <span className="font-semibold">Anonymous</span>
@@ -42,14 +61,7 @@ const Post = ({ data }: IPost) => {
         </div>
       </div>
       <div className={`flex my-2 ${toggleImage ? "flex-col" : "flex-row"}  `}>
-        <div className="flex h-full w-auto ">
-          <img
-            loading="eager"
-            onClick={() => settoggleImage(!toggleImage)}
-            src={toggleImage ? media : media_small}
-            alt=""
-          />
-        </div>
+        <div className="flex h-full w-auto items-center justify-start">{isMediaImage}</div>
         <div className="flex flex-1 flex-col break-all ">
           <div className=" min-h-10rem  block  overflow-y-auto break-all p-2 text-white ">
             {message}
