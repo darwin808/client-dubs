@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-import { useRouter } from "next/router"
 import React from "react"
 import Button from "../Button"
 import moment from "moment"
@@ -9,21 +8,18 @@ import { helper } from "../../utils"
 import ReactPlayer from "react-player"
 
 interface IPost {
+  onClick?: () => void
   data: any
 }
 
-const Post = ({ data }: IPost) => {
+const Post = ({ data, onClick }: IPost) => {
   const dispatch = useAppDispatch()
   const [toggleImage, settoggleImage] = React.useState<boolean>(false)
-  const { id, title, message, user_id, media, media_small, createdAt } = data || ""
-  const { push } = useRouter()
+  const { id, title, message, media, media_small, createdAt } = data || ""
 
   const [selected, setselected] = React.useState(false)
-  const handleClick = () => {
-    push({ pathname: `/b/thread/${id}`, query: { title, message, user_id, media, media_small } })
-  }
 
-  const isMediaImage =
+  const showMedia =
     media_small.length > 0 ? (
       <img
         loading="eager"
@@ -57,11 +53,11 @@ const Post = ({ data }: IPost) => {
         <span className="">{moment(createdAt).format("MM/DD/YY (ddd) HH:mm:ss")}</span>
         <span>No. {id}</span>
         <div className="w-20">
-          <Button onClick={handleClick}>Reply</Button>
+          <Button onClick={onClick}>Reply</Button>
         </div>
       </div>
       <div className={`flex my-2 ${toggleImage ? "flex-col" : "flex-row"}  `}>
-        <div className="flex h-full w-auto items-center justify-start">{isMediaImage}</div>
+        <div className="flex h-full w-auto items-center justify-start">{showMedia}</div>
         <div className="flex flex-1 flex-col break-all ">
           <div className=" min-h-10rem  block  overflow-y-auto break-all p-2 text-white ">
             {message}

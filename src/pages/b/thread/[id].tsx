@@ -9,6 +9,7 @@ import { fetcher } from "../../../services"
 import { helper } from "../../../utils"
 
 const api = process.env.NEXT_PUBLIC_API
+const ENDPOINT: string = "/post"
 
 const ThreadPage = () => {
   const router = useRouter()
@@ -50,7 +51,7 @@ const ThreadPage = () => {
       media
     }
 
-    const response = await Api.post(`/posts`, payload, options)
+    const response = await Api.post(ENDPOINT, payload, options)
 
     response.status === 200 && handlePostSuccess(response.data)
     response.status !== 200 && handlePostError(response)
