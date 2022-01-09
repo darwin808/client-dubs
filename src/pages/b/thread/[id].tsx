@@ -9,9 +9,11 @@ import { fetcher } from "../../../services"
 import { helper } from "../../../utils"
 
 const api = process.env.NEXT_PUBLIC_API
+const ENDPOINT: string = "/post"
 
 const ThreadPage = () => {
   const router = useRouter()
+  const [percent, setpercent] = React.useState(0)
   const { mutate } = useSWRConfig()
   const { pathname } = useRouter()
   const { id } = router.query
@@ -31,6 +33,12 @@ const ThreadPage = () => {
   if (error) return "An error has occurred."
   if (!data) return <Loader />
 
+  const options = {
+    onUploadProgress: (e: any) => {
+      const { loaded, total } = e
+      setpercent((loaded / total) * 100)
+    }
+  }
   const handleSubmit = async (e: any) => {
     e.preventDefault()
     setloading(true)
@@ -43,7 +51,7 @@ const ThreadPage = () => {
       media
     }
 
-    const response = await Api.post(`/posts`, payload)
+    const response = await Api.post(ENDPOINT, payload, options)
 
     response.status === 200 && handlePostSuccess(response.data)
     response.status !== 200 && handlePostError(response)
@@ -65,7 +73,7 @@ const ThreadPage = () => {
 
   return (
     <div className="Page">
-      {loading && <Loader />}
+      {loading && <Loader percent={percent} />}
       <h2>
         <a href="/b"> /b</a>
       </h2>

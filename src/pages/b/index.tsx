@@ -13,8 +13,8 @@ import Loader from "../../components/Ui/Loader"
 import { RANDOM_PIC } from "../../constants"
 import { IQueries } from "../../types"
 import { RootState } from "../../redux/store"
-import { LoadingBar } from "../../components/Ui/styles"
 
+const ENDPOINT = "/thread"
 const b = () => {
   const selectedIds: any = useAppSelector((e: RootState) => e.selected)
   const [percent, setpercent] = React.useState(0)
@@ -24,7 +24,6 @@ const b = () => {
   const [title, settitle] = React.useState<string>("")
   const [message, setmessage] = React.useState<string>("")
   const [media, setmedia] = React.useState<any>("")
-  // const [data, setdata] = React.useState<any>("")
   const [loading, setloading] = React.useState<boolean>(false)
   const { pathname } = useRouter()
   const dispatch = useAppDispatch()
@@ -40,9 +39,9 @@ const b = () => {
 
   if (error) return "An error has occurred."
   if (!data) return <Loader />
-  const { thread } = data || ""
+  const { threads } = data || ""
 
-  dispatch(pageActions.setPageData(thread))
+  dispatch(pageActions.setPageData(threads))
 
   const handleDelete = async () => {
     selectedIds &&
@@ -73,10 +72,9 @@ const b = () => {
       onUploadProgress: (e: any) => {
         const { loaded, total } = e
         setpercent((loaded / total) * 100)
-        console.log(`${(loaded / total) * 100}`)
       }
     }
-    const response = await Api.post(`/thread`, payload, options)
+    const response = await Api.post(ENDPOINT, payload, options)
 
     response.status === 200 && handlePostSuccess(response.data)
     response.status !== 200 && handlePostError(response)
@@ -95,6 +93,7 @@ const b = () => {
     console.log(error)
     setloading(false)
   }
+
   return (
     <div className={`Page`}>
       {loading && <Loader percent={percent} />}
@@ -116,7 +115,7 @@ const b = () => {
           setmedia={setmedia}
         />
       </div>
-      <Ui.PostsContainer data={thread} />
+      <Ui.PostsContainer data={threads} />
       <Ui.Pagination
         onClickDelete={handleDelete}
         page={page}
