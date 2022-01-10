@@ -9,7 +9,7 @@ import { fetcher } from "../../../services"
 import { helper } from "../../../utils"
 
 const api = process.env.NEXT_PUBLIC_API
-const ENDPOINT: string = "/post"
+const ENDPOINT: string = "/posts"
 
 const ThreadPage = () => {
   const router = useRouter()

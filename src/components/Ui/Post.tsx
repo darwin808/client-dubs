@@ -57,7 +57,9 @@ const Post = ({ data, onClick }: IPost) => {
         </div>
       </div>
       <div className={`flex my-2 ${toggleImage ? "flex-col" : "flex-row"}  `}>
-        <div className="flex h-full w-auto items-center justify-start">{showMedia}</div>
+        <div className={` ${media ? "flex" : "hidden"} h-full w-auto items-center justify-start `}>
+          {showMedia}
+        </div>
         <div className="flex flex-1 flex-col break-all ">
           <div className=" min-h-10rem  block  overflow-y-auto break-all p-2 text-white ">
             {message}
