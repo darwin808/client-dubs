@@ -70,7 +70,15 @@ const ThreadPage = () => {
     console.log(error)
     setloading(false)
   }
+  const handleReply = (data: any) => {
+    window.scroll(0, 0)
+  }
 
+  const showPosts = data?.posts?.map((e: any) => (
+    <div key={e.id}>
+      <Ui.Post data={e} onClick={() => handleReply(e)} />
+    </div>
+  ))
   return (
     <div className="Page">
       {loading && <Loader percent={percent} />}
@@ -91,7 +99,7 @@ const ThreadPage = () => {
         />
       </div>
       <Ui.Post data={router.query} />
-      <Ui.PostsContainer data={data.posts} />
+      <div>{showPosts}</div>
     </div>
   )
 }

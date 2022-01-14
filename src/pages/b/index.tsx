@@ -10,13 +10,13 @@ import { helper } from "../../utils"
 import { fetcher } from "../../services"
 import { Api, api } from "../../config"
 import Loader from "../../components/Ui/Loader"
-import { RANDOM_PIC } from "../../constants"
+import { RANDOM_PIC, THREAD } from "../../constants"
 import { IQueries } from "../../types"
 import { RootState } from "../../redux/store"
 
-const ENDPOINT = "/thread"
 const b = () => {
   const selectedIds: any = useAppSelector((e: RootState) => e.selected)
+  const { push } = useRouter()
   const [percent, setpercent] = React.useState(0)
 
   const [page, setpage] = React.useState(1)
@@ -74,7 +74,8 @@ const b = () => {
         setpercent((loaded / total) * 100)
       }
     }
-    const response = await Api.post(ENDPOINT, payload, options)
+
+    const response = await Api.post(THREAD, payload, options)
 
     response.status === 200 && handlePostSuccess(response.data)
     response.status !== 200 && handlePostError(response)
@@ -93,6 +94,19 @@ const b = () => {
     console.log(error)
     setloading(false)
   }
+  const handleReply = (data: any) => {
+    const { id, title, message, user_id, media, media_small, createdAt } = data || ""
+    push({
+      pathname: `/b/thread/${id}`,
+      query: { title, message, user_id, media, media_small, createdAt }
+    })
+  }
+
+  const showPosts = threads?.map((e: any) => (
+    <div key={e.id}>
+      <Ui.Post data={e} onClick={() => handleReply(e)} />
+    </div>
+  ))
 
   return (
     <div className={`Page`}>
@@ -115,7 +129,7 @@ const b = () => {
           setmedia={setmedia}
         />
       </div>
-      <Ui.PostsContainer data={threads} />
+      <div>{showPosts}</div>
       <Ui.Pagination
         onClickDelete={handleDelete}
         page={page}
