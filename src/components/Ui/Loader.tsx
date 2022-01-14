@@ -26,4 +26,4 @@ const Loader = ({ percent }: IProps) => {
   )
 }
 
-export default Loader
+export default React.memo(Loader)
