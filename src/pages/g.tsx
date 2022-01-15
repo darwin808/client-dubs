@@ -1,5 +1,4 @@
 import React from "react"
-import { Ui } from "../components/Ui"
 import axios from "axios"
 import { helper } from "../utils"
 
@@ -26,7 +25,6 @@ const g = ({ data }: any) => {
     <div className="bg-green-200 relative scroll-smooth h-screen w-full">
       {/* <Ui.FormComponent /> */}
       <h1>Tech</h1>
-      <Ui.PostsContainer data={data.allPosts} />
     </div>
   )
 }
