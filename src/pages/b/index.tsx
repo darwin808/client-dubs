@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
-import React from "react"
+import React, { FC } from "react"
 import { Ui } from "../../components/Ui"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks"
 import { pageActions } from "../../redux/actions"
@@ -102,12 +102,17 @@ const b = () => {
     })
   }
 
-  const showPosts = threads?.map((e: any) => (
-    <div key={e.id}>
-      <Ui.Post data={e} onClick={() => handleReply(e)} />
-    </div>
-  ))
-
+  const ShowThreads: FC = () => {
+    return (
+      <div>
+        {threads?.map((e: any) => (
+          <div key={e.id}>
+            <Ui.Post data={e} onClick={() => handleReply(e)} />
+          </div>
+        ))}
+      </div>
+    )
+  }
   return (
     <div className={`Page`}>
       {loading && <Loader percent={percent} />}
@@ -129,7 +134,7 @@ const b = () => {
           setmedia={setmedia}
         />
       </div>
-      <div>{showPosts}</div>
+      <ShowThreads />
       <Ui.Pagination
         onClickDelete={handleDelete}
         page={page}
