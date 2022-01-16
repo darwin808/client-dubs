@@ -16,4 +16,4 @@ git cz
 - yarn dev
 - yarn build
 
-https://d28gz2fnk9q2vf.cloudfront.net/
+https://client-dubs.vercel.app/
