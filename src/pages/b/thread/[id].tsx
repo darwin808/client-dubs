@@ -10,10 +10,11 @@ import { helper } from "../../../utils"
 
 const api = process.env.NEXT_PUBLIC_API
 const ENDPOINT: string = "/posts"
+const PageHeading = "Post a Reply"
+const PAGE_TITLE = "/b Random"
 
 const ThreadPage = () => {
   const router = useRouter()
-  const [percent, setpercent] = React.useState(0)
   const { mutate } = useSWRConfig()
   const { pathname } = useRouter()
   const { id } = router.query
@@ -24,13 +25,15 @@ const ThreadPage = () => {
   const url: string = `${api}/posts/${id}`
   const uri: string = `${api}/posts/${thread_id}`
 
+  const [percent, setpercent] = React.useState(0)
+  const [toggleForm, settoggleForm] = React.useState(false)
   const [title, settitle] = React.useState<string>("")
   const [message, setmessage] = React.useState<string>("")
   const [loading, setloading] = React.useState<boolean>(false)
   const [media, setmedia] = React.useState<any>("")
 
   const { data, error } = useSWR(url, fetcher)
-  if (error) return "An error has occurred."
+  if (error) return <div>An error has occurred.</div>
   if (!data) return <Loader />
 
   const options = {
@@ -73,35 +76,47 @@ const ThreadPage = () => {
   const handleReply = (data: any) => {
     window.scroll(0, 0)
   }
+  const handleToggleThread = () => {
+    settoggleForm(true)
+  }
 
+  const PageHeaderProps = {
+    title: PAGE_TITLE
+  }
+  const FormProps = {
+    heading: PageHeading,
+    handleSubmit: handleSubmit,
+    title: title,
+    settitle: settitle,
+    message: message,
+    setmessage: setmessage,
+    media: media,
+    setmedia: setmedia
+  }
   const showPosts = data?.posts?.map((e: any) => (
     <div key={e.id}>
       <Ui.Post data={e} onClick={() => handleReply(e)} />
     </div>
   ))
+
+  const StartThreadProps = {
+    onClick: handleToggleThread,
+    title: "Post a Reply"
+  }
+  const formContainer = (
+    <div className="FormContainer">
+      {toggleForm ? <Ui.FormComponent {...FormProps} /> : <Ui.StartThread {...StartThreadProps} />}
+    </div>
+  )
   return (
     <div className="Page">
       {loading && <Loader percent={percent} />}
-      <h2>
-        <a href="/b"> /b</a>
-      </h2>
-
-      <div className="w-full flex justify-center">
-        <Ui.FormComponent
-          heading={"Create a Post"}
-          handleSubmit={handleSubmit}
-          title={title}
-          settitle={settitle}
-          message={message}
-          setmessage={setmessage}
-          media={media}
-          setmedia={setmedia}
-        />
-      </div>
+      <Ui.PageHeader {...PageHeaderProps} />
+      {formContainer}
       <Ui.Post data={router.query} />
       <div>{showPosts}</div>
     </div>
   )
 }
 
-export default ThreadPage
+export default React.memo(ThreadPage)

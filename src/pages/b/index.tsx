@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { FC } from "react"
+import React from "react"
 import { Ui } from "../../components/Ui"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks"
 import { pageActions } from "../../redux/actions"
@@ -106,10 +106,10 @@ const B: NextPage = () => {
     })
   }
 
-  const ShowThreads: FC = () => {
+  const ShowThreads: any = ({ threads }: any) => {
     return (
       <div>
-        {threads?.map((e: any) => (
+        {threads.map((e: any) => (
           <div key={e.id}>
             <Ui.Post data={e} onClick={() => handleReply(e)} />
           </div>
@@ -142,18 +142,21 @@ const B: NextPage = () => {
     pageCount: data.lastPage
   }
 
+  const formContainer = (
+    <div className="FormContainer">
+      {toggleForm ? (
+        <Ui.FormComponent {...FormProps} />
+      ) : (
+        <Ui.StartThread title="Start a Thread" onClick={handleToggleThread} />
+      )}
+    </div>
+  )
   return (
     <div className="Page">
       {loading && <Loader percent={percent} />}
       <Ui.PageHeader {...PageHeaderProps} />
-      <div className="FormContainer">
-        {toggleForm ? (
-          <Ui.FormComponent {...FormProps} />
-        ) : (
-          <Ui.StartThread onClick={handleToggleThread} />
-        )}
-      </div>
-      <ShowThreads />
+      {formContainer}
+      <ShowThreads threads={threads} />
       <Ui.Pagination {...PaginationProps} />
     </div>
   )
