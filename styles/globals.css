@@ -35,3 +35,6 @@ a {
 .PostMain {
   @apply p-4  cursor-pointer rounded-sm flex  my-2 text-sm  bg-gray-600 h-auto w-full flex-col;
 }
+.FormContainer {
+  @apply h-auto w-full flex justify-center my-2;
+}

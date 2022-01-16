@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 import React, { FC } from "react"
 import { Ui } from "../../components/Ui"
@@ -10,17 +9,22 @@ import { helper } from "../../utils"
 import { fetcher } from "../../services"
 import { Api, api } from "../../config"
 import Loader from "../../components/Ui/Loader"
-import { RANDOM_PIC, THREAD } from "../../constants"
+import { THREAD } from "../../constants"
 import { IQueries } from "../../types"
 import { RootState } from "../../redux/store"
+import { NextPage } from "next"
 
-const b = () => {
+const perPage = 5
+const PAGE_TITLE = "/b Random"
+const PageHeading = "Create a Thread"
+
+const B: NextPage = () => {
   const selectedIds: any = useAppSelector((e: RootState) => e.selected)
   const { push } = useRouter()
   const [percent, setpercent] = React.useState(0)
 
+  const [toggleForm, settoggleForm] = React.useState(false)
   const [page, setpage] = React.useState(1)
-  const [perPage, _setperPage] = React.useState(5)
   const [title, settitle] = React.useState<string>("")
   const [message, setmessage] = React.useState<string>("")
   const [media, setmedia] = React.useState<any>("")
@@ -37,7 +41,7 @@ const b = () => {
 
   const { data, error } = useSWR(uri, fetcher)
 
-  if (error) return "An error has occurred."
+  if (error) return <div>An error has occurred. </div>
   if (!data) return <Loader />
   const { threads } = data || ""
 
@@ -113,36 +117,46 @@ const b = () => {
       </div>
     )
   }
+
+  const handleToggleThread = () => {
+    settoggleForm(true)
+  }
+
+  const PageHeaderProps = {
+    title: PAGE_TITLE
+  }
+  const FormProps = {
+    heading: PageHeading,
+    handleSubmit: handleSubmit,
+    title: title,
+    settitle: settitle,
+    message: message,
+    setmessage: setmessage,
+    media: media,
+    setmedia: setmedia
+  }
+  const PaginationProps = {
+    onClickDelete: handleDelete,
+    page,
+    onPageChange: handlePageClick,
+    pageCount: data.lastPage
+  }
+
   return (
-    <div className={`Page`}>
+    <div className="Page">
       {loading && <Loader percent={percent} />}
-      <div className="block text-center">
-        <div className=" flex w-full justify-center mb-4 h-24">
-          <img src={RANDOM_PIC} alt="" />
-        </div>
-        <div className="Heading1">/b Random</div>
-      </div>
-      <div className=" h-auto w-full flex justify-center my-2">
-        <Ui.FormComponent
-          heading={"Create a Thread"}
-          handleSubmit={handleSubmit}
-          title={title}
-          settitle={settitle}
-          message={message}
-          setmessage={setmessage}
-          media={media}
-          setmedia={setmedia}
-        />
+      <Ui.PageHeader {...PageHeaderProps} />
+      <div className="FormContainer">
+        {toggleForm ? (
+          <Ui.FormComponent {...FormProps} />
+        ) : (
+          <Ui.StartThread onClick={handleToggleThread} />
+        )}
       </div>
       <ShowThreads />
-      <Ui.Pagination
-        onClickDelete={handleDelete}
-        page={page}
-        onPageChange={handlePageClick}
-        pageCount={data.lastPage}
-      />
+      <Ui.Pagination {...PaginationProps} />
     </div>
   )
 }
 
-export default b
+export default React.memo(B)
