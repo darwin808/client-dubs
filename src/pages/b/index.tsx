@@ -39,13 +39,13 @@ const B: NextPage = () => {
   const uri: string = `${url}?${helper.generateQuery(queries)}`
   const page_id: number = helper.switchPages(pathname)
 
+  console.log(process.env, "wewe")
   const { data, error } = useSWR(uri, fetcher)
 
   if (error) return <div>An error has occurred. </div>
   if (!data) return <Loader />
   const { threads } = data || ""
 
-  console.log(process.env, "wewe")
   dispatch(pageActions.setPageData(threads))
 
   const handleDelete = async () => {
