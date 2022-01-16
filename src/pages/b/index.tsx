@@ -45,6 +45,7 @@ const B: NextPage = () => {
   if (!data) return <Loader />
   const { threads } = data || ""
 
+  console.log(process.env, "wewe")
   dispatch(pageActions.setPageData(threads))
 
   const handleDelete = async () => {
