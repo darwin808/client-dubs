@@ -1,6 +1,6 @@
 import { IQueries } from "../types"
 
-const switchPages = (page: string) => {
+export const switchPages = (page: string) => {
   switch (page) {
     case "/b":
       return 2
@@ -8,7 +8,7 @@ const switchPages = (page: string) => {
       return 1
   }
 }
-const toBase64 = async (file: any) =>
+export const toBase64 = async (file: any) =>
   new Promise((resolve, reject) => {
     const reader = new FileReader()
     file && reader.readAsDataURL(file)
@@ -17,7 +17,7 @@ const toBase64 = async (file: any) =>
     }
     reader.onerror = (error) => reject(error)
   })
-const generateQuery = (queries: IQueries[]) => {
+export const generateQuery = (queries: IQueries[]) => {
   // const queries = [
   //   { name: "page", value: 1 },
   //   { name: "perPage", value: 10 }
@@ -29,7 +29,7 @@ const generateQuery = (queries: IQueries[]) => {
   })
   return parameters.toString()
 }
-const handleChecked = (
+export const handleChecked = (
   checked: boolean,
   id: string,
   dispatch: any,
@@ -38,10 +38,4 @@ const handleChecked = (
 ) => {
   setselected(checked)
   dispatch(pageActions.addSelectedThread(id))
-}
-export const helper = {
-  switchPages,
-  toBase64,
-  generateQuery,
-  handleChecked
 }

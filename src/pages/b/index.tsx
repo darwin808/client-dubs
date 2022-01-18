@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks"
 import { pageActions } from "../../redux/actions"
 import useSWR, { mutate } from "swr"
 import { useRouter } from "next/router"
-import { helper } from "../../utils"
+import * as helper from "../../utils"
 import { fetcher } from "../../services"
 import { Api, api } from "../../config"
 import Loader from "../../components/Ui/Loader"
@@ -18,7 +18,7 @@ const perPage = 5
 const PAGE_TITLE = "/b Random"
 const PageHeading = "Create a Thread"
 
-const B: NextPage = () => {
+const Page: NextPage = () => {
   const selectedIds: any = useAppSelector((e: RootState) => e.selected)
   const { push } = useRouter()
   const [percent, setpercent] = React.useState(0)
@@ -39,7 +39,6 @@ const B: NextPage = () => {
   const uri: string = `${url}?${helper.generateQuery(queries)}`
   const page_id: number = helper.switchPages(pathname)
 
-  console.log(process.env, "wewe")
   const { data, error } = useSWR(uri, fetcher)
 
   if (error) return <div>An error has occurred. </div>
@@ -163,4 +162,4 @@ const B: NextPage = () => {
   )
 }
 
-export default React.memo(B)
+export default React.memo(Page)

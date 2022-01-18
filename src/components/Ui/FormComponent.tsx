@@ -2,7 +2,7 @@
 import React from "react"
 import Swal from "sweetalert2"
 import { IForm } from "../../types"
-import { helper } from "../../utils"
+import * as helper from "../../utils"
 import Button from "../Button"
 
 const FormComponent = ({

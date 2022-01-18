@@ -6,7 +6,7 @@ import { Ui } from "../../../components/Ui"
 import Loader from "../../../components/Ui/Loader"
 import { Api } from "../../../config"
 import { fetcher } from "../../../services"
-import { helper } from "../../../utils"
+import * as helper from "../../../utils"
 
 const api = process.env.NEXT_PUBLIC_API
 const ENDPOINT: string = "/posts"
