@@ -4,7 +4,7 @@ import Button from "../Button"
 import moment from "moment"
 import { useAppDispatch } from "../../redux/hooks"
 import { pageActions } from "../../redux/actions/index"
-import { helper } from "../../utils"
+import * as helper from "../../utils"
 import ReactPlayer from "react-player"
 
 interface IPost {
@@ -38,15 +38,19 @@ const Post = ({ data, onClick }: IPost) => {
         height={"250px"}
       />
     )
+  React.useEffect(() => {
+    console.log(selected, "wewe")
+  }, [selected])
   return (
     <div className="PostMain">
       <div className="text-white header flex items-center gap-2">
         <input
           type="checkbox"
           checked={selected}
-          onChange={(e: any) =>
+          onChange={(e: any) => {
+            console.log(e.target.checked, "wewe")
             helper.handleChecked(e.target.checked, id, dispatch, setselected, pageActions)
-          }
+          }}
         />
         <span className="text-red-300 underline">/{title}</span>
         <span className="font-semibold">Anonymous</span>

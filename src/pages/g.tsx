@@ -1,6 +1,6 @@
 import React from "react"
 import axios from "axios"
-import { helper } from "../utils"
+import * as helper from "../utils"
 
 const api = process.env.NEXT_PUBLIC_API
 

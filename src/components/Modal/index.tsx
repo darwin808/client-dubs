@@ -47,4 +47,4 @@ const Modal = ({ children, isOpen, onRequestClose, id }: IModal) => {
   )
 }
 
-export default Modal
+export default React.memo(Modal)
