@@ -13,3 +13,13 @@ export interface IQueries {
   name: string
   value: number
 }
+
+export interface IPost {
+  id: number | string
+  title: string
+  message: string
+  media: string
+  media_small: string
+  createdAt: string
+  user_id?: string
+}

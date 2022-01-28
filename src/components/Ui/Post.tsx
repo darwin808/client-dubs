@@ -2,17 +2,18 @@
 import React from "react"
 import Button from "../Button"
 import moment from "moment"
-import { useAppDispatch } from "../../redux/hooks"
 import { pageActions } from "../../redux/actions/index"
 import * as helper from "../../utils"
 import ReactPlayer from "react-player"
+import { useAppDispatch } from "../../redux/hooks"
+import { IPost } from "../../types"
 
-interface IPost {
+interface IProps {
   onClick?: () => void
-  data: any
+  data: IPost | any
 }
 
-const Post = ({ data, onClick }: IPost) => {
+const Post = ({ data, onClick }: IProps) => {
   const dispatch = useAppDispatch()
   const [toggleImage, settoggleImage] = React.useState<boolean>(false)
   const { id, title, message, media, media_small, createdAt } = data || ""
@@ -47,13 +48,12 @@ const Post = ({ data, onClick }: IPost) => {
         <input
           type="checkbox"
           checked={selected}
-          onChange={(e: any) => {
-            console.log(e.target.checked, "wewe")
+          onChange={(e: any) =>
             helper.handleChecked(e.target.checked, id, dispatch, setselected, pageActions)
-          }}
+          }
         />
         <span className="text-red-300 underline">/{title}</span>
-        <span className="font-semibold">Anonymous</span>
+        <span className="font-semibold">Anonymous{JSON.stringify(selected)}</span>
         <span className="">{moment(createdAt).format("MM/DD/YY (ddd) HH:mm:ss")}</span>
         <span>No. {id}</span>
         <div className="w-20">

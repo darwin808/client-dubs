@@ -108,12 +108,13 @@ const ThreadPage = () => {
       {toggleForm ? <Ui.FormComponent {...FormProps} /> : <Ui.StartThread {...StartThreadProps} />}
     </div>
   )
+  console.log(router.query, "wewe")
   return (
     <div className="Page">
       {loading && <Loader percent={percent} />}
       <Ui.PageHeader {...PageHeaderProps} />
       {formContainer}
-      <Ui.Post data={router.query} />
+      <Ui.Post data={router.query} onClick={() => {}} />
       <div>{showPosts}</div>
     </div>
   )
