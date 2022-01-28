@@ -31,7 +31,7 @@ export const generateQuery = (queries: IQueries[]) => {
 }
 export const handleChecked = (
   checked: boolean,
-  id: string,
+  id: string | number,
   dispatch: any,
   setselected: (e: any) => any,
   pageActions: any
