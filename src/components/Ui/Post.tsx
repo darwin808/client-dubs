@@ -51,7 +51,7 @@ const Post = ({ data, onClick }: IProps) => {
           onChange={(e: any) => helper.handleChecked(e.target.checked, id, dispatch, setselected, pageActions)}
         />
         <span className="text-red-300 underline">/{title}</span>
-        <span className="font-semibold">Anonymous{JSON.stringify(selected)}</span>
+        <span className="font-semibold">Anonymous</span>
         <span className="">{moment(createdAt).format("MM/DD/YY (ddd) HH:mm:ss")}</span>
         <span>No. {id}</span>
         <div className="w-20">
