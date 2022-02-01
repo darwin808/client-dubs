@@ -5,16 +5,7 @@ import { IForm } from "../../types"
 import * as helper from "../../utils"
 import Button from "../Button"
 
-const FormComponent = ({
-  heading,
-  handleSubmit,
-  title,
-  settitle,
-  message,
-  setmessage,
-  media,
-  setmedia
-}: IForm) => {
+const FormComponent = ({ heading, handleSubmit, title, settitle, message, setmessage, media, setmedia }: IForm) => {
   const handleMedia = (data: any) => {
     if (data.size > 2000000) {
       Swal.fire({

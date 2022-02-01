@@ -10,10 +10,7 @@ class MainDocument extends Document {
     return (
       <Html>
         <Head />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Russo+One" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script" rel="stylesheet" />
         <body>
