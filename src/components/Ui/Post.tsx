@@ -48,9 +48,7 @@ const Post = ({ data, onClick }: IProps) => {
         <input
           type="checkbox"
           checked={selected}
-          onChange={(e: any) =>
-            helper.handleChecked(e.target.checked, id, dispatch, setselected, pageActions)
-          }
+          onChange={(e: any) => helper.handleChecked(e.target.checked, id, dispatch, setselected, pageActions)}
         />
         <span className="text-red-300 underline">/{title}</span>
         <span className="font-semibold">Anonymous</span>
@@ -61,13 +59,9 @@ const Post = ({ data, onClick }: IProps) => {
         </div>
       </div>
       <div className={`flex my-2 ${toggleImage ? "flex-col" : "flex-row"}  `}>
-        <div className={` ${media ? "flex" : "hidden"} h-full w-auto items-center justify-start `}>
-          {showMedia}
-        </div>
+        <div className={` ${media ? "flex" : "hidden"} h-full w-auto items-center justify-start `}>{showMedia}</div>
         <div className="flex flex-1 flex-col break-all ">
-          <div className=" min-h-10rem  block  overflow-y-auto break-all p-2 text-white ">
-            {message}
-          </div>
+          <div className=" min-h-10rem  block  overflow-y-auto break-all p-2 text-white ">{message}</div>
         </div>
       </div>
     </div>

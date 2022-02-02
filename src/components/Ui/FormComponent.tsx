@@ -1,20 +1,11 @@
 /* eslint-disable camelcase */
-import React from "react"
+import React, { FormEvent } from "react"
 import Swal from "sweetalert2"
 import { IForm } from "../../types"
 import * as helper from "../../utils"
 import Button from "../Button"
 
-const FormComponent = ({
-  heading,
-  handleSubmit,
-  title,
-  settitle,
-  message,
-  setmessage,
-  media,
-  setmedia
-}: IForm) => {
+const FormComponent = ({ heading, handleSubmit, title, settitle, message, setmessage, media, setmedia }: IForm) => {
   const handleMedia = (data: any) => {
     if (data.size > 2000000) {
       Swal.fire({
@@ -25,7 +16,7 @@ const FormComponent = ({
       return null
     }
 
-    return helper.toBase64(data).then((e) => setmedia(e))
+    return helper.toBase64(data).then((e: any) => setmedia(e))
   }
   return (
     <form action="submit" onSubmit={handleSubmit} className="Forms">
@@ -36,7 +27,7 @@ const FormComponent = ({
         placeholder="Title"
         className="Inputs"
         value={title}
-        onChange={(e: any) => settitle(e.target.value)}
+        onChange={(e: FormEvent<HTMLInputElement>) => settitle(e.currentTarget.value)}
       />
       <textarea
         id="post"
@@ -46,7 +37,7 @@ const FormComponent = ({
         rows={4}
         cols={30}
         value={message}
-        onChange={(e: any) => setmessage(e.target.value)}
+        onChange={(e: FormEvent<HTMLTextAreaElement>) => setmessage(e.currentTarget.value)}
       ></textarea>
       <input
         className="text-white "
