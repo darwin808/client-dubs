@@ -1,6 +1,6 @@
 import React from "react"
 import ReactPaginate from "react-paginate"
-import Button from "../Button"
+// import Button from "../Button"
 
 interface IProps {
   onPageChange: (e: any) => void
@@ -16,7 +16,7 @@ const Pagination = ({ onClickDelete, page, onPageChange, pageCount }: IProps) =>
         breakLabel="..."
         nextLabel="Next"
         onPageChange={onPageChange}
-        pageRangeDisplayed={2}
+        pageRangeDisplayed={1}
         pageCount={pageCount}
         previousLabel="Previous"
         className="flex  gap-2 items-center"
@@ -27,9 +27,7 @@ const Pagination = ({ onClickDelete, page, onPageChange, pageCount }: IProps) =>
         activeClassName="bg-gray-700 ring-2 ring-purple-400"
         activeLinkClassName="font-black text-purple-400"
       />
-      <div>
-        <Button onClick={onClickDelete}>DELETE</Button>
-      </div>
+      <div>{/* <Button onClick={onClickDelete}>DELETE</Button> */}</div>
     </div>
   )
 }

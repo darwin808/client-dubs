@@ -2,10 +2,9 @@
 import React from "react"
 import Button from "../Button"
 import moment from "moment"
-import { pageActions } from "../../redux/actions/index"
-import * as helper from "../../utils"
+// import { pageActions } from "../../redux/actions/index"
+// import * as helper from "../../utils"
 import ReactPlayer from "react-player"
-import { useAppDispatch } from "../../redux/hooks"
 import { IPost } from "../../types"
 
 interface IProps {
@@ -14,46 +13,46 @@ interface IProps {
 }
 
 const Post = ({ data, onClick }: IProps) => {
-  const dispatch = useAppDispatch()
   const [toggleImage, settoggleImage] = React.useState<boolean>(false)
   const { id, title, message, media, media_small, createdAt } = data || ""
 
-  const [selected, setselected] = React.useState(false)
+  // const [selected, setselected] = React.useState(false)
 
   const showMedia =
     media_small.length > 0 ? (
-      <img
-        loading="eager"
-        onClick={() => settoggleImage(!toggleImage)}
-        src={toggleImage ? media : media_small}
-        alt=""
-      />
+      <div className="  xs:w-44 h-auto lg:w-full">
+        <img
+          loading="eager"
+          onClick={() => settoggleImage(!toggleImage)}
+          src={toggleImage ? media : media_small}
+          alt=""
+        />
+      </div>
     ) : (
-      <ReactPlayer
-        controls={true}
-        url={media}
-        muted={true}
-        playing={false}
-        loop={true}
-        width={"300px"}
-        height={"250px"}
-      />
+      <div className="h-64 w-full">
+        <ReactPlayer
+          controls={true}
+          url={media}
+          muted={true}
+          playing={false}
+          loop={true}
+          width={"100%"}
+          height={"100%"}
+        />
+      </div>
     )
-  React.useEffect(() => {
-    console.log(selected, "wewe")
-  }, [selected])
   return (
     <div className="PostMain">
       <div className="text-white header flex items-center gap-2">
-        <input
+        {/* <input
           type="checkbox"
           checked={selected}
           onChange={(e: any) => helper.handleChecked(e.target.checked, id, dispatch, setselected, pageActions)}
-        />
+        /> */}
         <span className="text-red-300 underline">/{title}</span>
         <span className="font-semibold">Anonymous</span>
-        <span className="">{moment(createdAt).format("MM/DD/YY (ddd) HH:mm:ss")}</span>
-        <span>No. {id}</span>
+        <span className="lg:flex xs:hidden">{moment(createdAt).format("MM/DD/YY (ddd) HH:mm:ss")}</span>
+        <span className="whitespace-nowrap">No. {id}</span>
         <div className="w-20">
           <Button onClick={onClick}>Reply</Button>
         </div>
