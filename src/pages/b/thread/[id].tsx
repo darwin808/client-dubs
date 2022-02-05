@@ -10,7 +10,7 @@ import * as helper from "../../../utils"
 
 const api = process.env.NEXT_PUBLIC_API
 const ENDPOINT: string = "/posts"
-const PageHeading = "Post a Reply"
+const heading = "Post a Reply"
 const PAGE_TITLE = "/b Random"
 
 const ThreadPage = () => {
@@ -84,14 +84,14 @@ const ThreadPage = () => {
     title: PAGE_TITLE
   }
   const FormProps = {
-    heading: PageHeading,
-    handleSubmit: handleSubmit,
-    title: title,
-    settitle: settitle,
-    message: message,
-    setmessage: setmessage,
-    media: media,
-    setmedia: setmedia
+    heading,
+    handleSubmit,
+    title,
+    settitle,
+    message,
+    setmessage,
+    media,
+    setmedia
   }
   const showPosts = data?.posts?.map((e: any) => (
     <div key={e.id}>
@@ -101,7 +101,7 @@ const ThreadPage = () => {
 
   const StartThreadProps = {
     onClick: handleToggleThread,
-    title: "Post a Reply"
+    title: heading
   }
   const formContainer = (
     <div className="FormContainer">
