@@ -16,7 +16,7 @@ import { NextPage } from "next"
 
 const perPage = 5
 const PAGE_TITLE = "/b Random"
-const PageHeading = "Create a Thread"
+const heading = "Create a Thread"
 
 const Page: NextPage = () => {
   const selectedIds: any = useAppSelector((e: RootState) => e.selected)
@@ -126,14 +126,14 @@ const Page: NextPage = () => {
     title: PAGE_TITLE
   }
   const FormProps = {
-    heading: PageHeading,
-    handleSubmit: handleSubmit,
-    title: title,
-    settitle: settitle,
-    message: message,
-    setmessage: setmessage,
-    media: media,
-    setmedia: setmedia
+    heading,
+    handleSubmit,
+    title,
+    settitle,
+    message,
+    setmessage,
+    media,
+    setmedia
   }
   const PaginationProps = {
     onClickDelete: handleDelete,
