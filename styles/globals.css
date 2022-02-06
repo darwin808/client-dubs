@@ -1,40 +1,40 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-    Helvetica Neue, sans-serif;
+   padding: 0;
+   margin: 0;
+   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+      Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+   color: inherit;
+   text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+   box-sizing: border-box;
 }
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .Page {
-  @apply bg-gray-800 xs:px-4 lg:px-20 py-10 relative scroll-smooth  gap-4 min-h-100vh w-full overflow-y-auto flex flex-col font-FiraSans overflow-x-hidden;
+   @apply bg-gray-800 xs:px-4 lg:px-20 py-10 relative scroll-smooth  gap-4 min-h-100vh w-full overflow-y-auto flex flex-col font-FiraSans overflow-x-hidden;
 }
 .Inputs {
-  @apply py-1 px-2 outline-none ring-transparent focus:ring-purple-400 ring-offset-2 ring-4 transform transition-all rounded-sm;
+   @apply py-1 px-2 outline-none ring-transparent focus:ring-purple-400 ring-offset-2 ring-4 transform transition-all rounded-sm;
 }
 
 .Forms {
-  @apply bg-gray-600 p-4 gap-4 flex flex-col w-96;
+   @apply bg-gray-600 p-4 gap-4 flex flex-col w-96;
 }
 
 .Heading1 {
-  @apply text-3xl font-bold  text-red-400;
+   @apply text-3xl font-bold  text-red-400;
 }
 .PostMain {
-  @apply p-4  cursor-pointer rounded-sm flex  my-2 text-sm  bg-gray-600 h-auto w-full flex-col;
+   @apply p-4  cursor-pointer rounded-sm flex  my-2 text-sm  bg-gray-600 h-auto w-full flex-col;
 }
 .FormContainer {
-  @apply h-auto w-full flex justify-center my-2;
+   @apply h-auto w-full flex justify-center my-2;
 }
