@@ -10,6 +10,7 @@
 ## How to commit?
 
 git cz
+yarn commit
 
 ## This project use Yarn
 
