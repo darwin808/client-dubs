@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React, { FormEvent } from "react"
 import Swal from "sweetalert2"
 import { IForm } from "../../types"
@@ -49,6 +48,7 @@ const FormComponent = ({
             onChange={(e: FormEvent<HTMLTextAreaElement>) => setmessage(e.currentTarget.value)}
          ></textarea>
          <input
+            value={""}
             className="text-white "
             type="file"
             onChange={(e: any) => handleMedia(e.target.files[0])}
