@@ -49,6 +49,7 @@ const FormComponent = ({
             onChange={(e: FormEvent<HTMLTextAreaElement>) => setmessage(e.currentTarget.value)}
          ></textarea>
          <input
+            value={""}
             className="text-white "
             type="file"
             onChange={(e: any) => handleMedia(e.target.files[0])}
