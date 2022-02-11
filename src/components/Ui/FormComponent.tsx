@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React, { FormEvent } from "react"
 import Swal from "sweetalert2"
 import { IForm } from "../../types"
