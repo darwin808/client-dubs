@@ -16,6 +16,7 @@ const FormProps = {
    media: "test",
    setmedia: myMock
 }
+
 describe("Form component", () => {
    beforeEach(() => {
       render(<FormComponent {...FormProps} />)
@@ -34,5 +35,10 @@ describe("Form component", () => {
       const txtArea = screen.getByPlaceholderText("formMessage") as HTMLTextAreaElement
       expect(txtArea).toBeInTheDocument()
       expect(txtArea.value).toBe("test")
+   })
+   it("renders a Form button", () => {
+      const button = screen.getByTestId("submitBtn")
+      expect(button).toBeInTheDocument()
+      expect(button.textContent).toBe("submit")
    })
 })
