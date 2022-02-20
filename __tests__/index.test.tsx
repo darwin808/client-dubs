@@ -1,8 +1,8 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import Home from "./index"
+import Home from "../src/pages/index"
 import { Provider } from "react-redux"
-import { store } from "../redux/store"
+import { store } from "../src/redux/store"
 
 describe("Home", () => {
    beforeEach(() => {

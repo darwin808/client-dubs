@@ -4,7 +4,7 @@
 
 echo '🏗️👷 Styling, testing and building your project before committing'
 
-npm run check-format ||
+yarn  check-format ||
 (
     echo '🤢🤮🤢🤮 #####################  PRETTIER  ################## 🤢🤮🤢🤮
             Prettier Check Failed. Run npm run format, add changes and try commit again.';
@@ -16,7 +16,7 @@ echo '🎃🎃🧛🩸👽👻👹🎃🎃🎃🎃'
 echo '🎃🎃🧛🩸👽👻👹🎃🎃🎃🎃'
 echo '🎃🎃🧛🩸👽👻👹🎃🎃🎃🎃'
 
-npm run check-lint ||
+yarn check-lint ||
 (
         echo '😤🏀👋😤 ###############      ESLINT    ################# 😤🏀👋😤 
                 ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
@@ -28,9 +28,23 @@ echo '🎃🎃🧛🩸👽👻👹🎃🎃🎃🎃'
 echo '🎃🎃🧛🩸👽👻👹🎃🎃🎃🎃'
 echo '🎃🎃🧛🩸👽👻👹🎃🎃🎃🎃'
 
-npm run check-types ||
+yarn check-types ||
 (
     echo '🤡😂❌🤡 Failed Type check. 🤡😂❌🤡
+            Are you seriously trying to write that? Make the changes required above.'
+    false;
+)
+
+echo '🎃🎃🧛🩸👽👻👹🎃🎃🎃🎃'
+echo '🎃🎃🧛🩸👽👻👹🎃🎃🎃🎃'
+echo '🎃🎃🧛🩸👽👻👹🎃🎃🎃🎃'
+echo '🎃🎃🧛🩸👽👻👹🎃🎃🎃🎃'
+echo '🎃🎃🧛🩸👽👻👹🎃🎃🎃🎃'
+
+
+sudo yarn test ||
+(
+    echo '🤡😂❌🤡 Failed Test. 🤡😂❌🤡
             Are you seriously trying to write that? Make the changes required above.'
     false;
 )
