@@ -16,6 +16,7 @@ const FormProps = {
    media: "test",
    setmedia: myMock
 }
+
 describe("Form component", () => {
    beforeEach(() => {
       render(<FormComponent {...FormProps} />)

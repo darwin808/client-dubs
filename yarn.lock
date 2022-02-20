@@ -5320,10 +5320,10 @@ redux@^4.0.0, redux@^4.1.2:
   dependencies:
     "@babel/runtime" "^7.9.2"
 
-reduxjs-toolkit-persist@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/reduxjs-toolkit-persist/-/reduxjs-toolkit-persist-7.1.0.tgz#bb1c8a245792f3af065e4cd807719ac7a6a19b22"
-  integrity sha512-hFkBPBzFtYWP733m0bRChptwnaDDgQRgG+i1JyJGT31zKdHXUtc86LwIFE3hIMVtjcpHjX6tuTHvRrK4f/l/zw==
+reduxjs-toolkit-persist@^7.2.1:
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/reduxjs-toolkit-persist/-/reduxjs-toolkit-persist-7.2.1.tgz#5761d891e984546dd056bb801b09625fda202de4"
+  integrity sha512-1gu9Qid0qXlsM4a2D8eHx/YOwa7I0lgAXqM0KYQoX2RA+KMezkq5wkJKEMLoUkpqVuWYHRdU7auS2/jFVsR0gQ==
 
 regenerator-runtime@^0.13.4:
   version "0.13.9"
@@ -5894,10 +5894,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-sweetalert2@^11.4.1:
-  version "11.4.1"
-  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.4.1.tgz#20551a81d4aef381aa850c249b8dc222d53507b0"
-  integrity sha512-4KA4e7nUMQWH4A94tAClpdAZswEyDO3SzOPQ5P5L/2tSuTlZ+AeOXXvFnevb88Xt0W6gDbfug/u3CXcWd1SETQ==
+sweetalert2@^11.4.2:
+  version "11.4.2"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.4.2.tgz#6cafdfd72312b7d807381cc4a4b7223fec4113ce"
+  integrity sha512-Gj3X/pNYtCp3LIKxUbcdftyeuFEZR5JZn6+I1m152GQSAMsDq2eH9tL466/CDaMvYu2L+XdR0mWwaemXpQYkQw==
 
 swr@^1.2.2:
   version "1.2.2"
