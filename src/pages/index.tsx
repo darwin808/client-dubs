@@ -10,11 +10,11 @@ const Home: NextPage = () => {
    }, [user])
    return (
       <div className="bg-gray-600 h-screen flex-col  justify-center flex items-center font-FiraSans ">
-         <div className="uppercase  text-5xl font-bold text-red-600">
+         <div className="uppercase  text-5xl font-bold text-red-600" data-testid="heading">
             under maintenance please proceed to
          </div>
          <div>
-            <a href="/b" className="underline text-4xl text-purple-600">
+            <a href="/b" className="underline text-4xl text-purple-600" data-testid="bLink">
                /b
             </a>
          </div>
