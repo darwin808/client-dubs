@@ -20,7 +20,7 @@ const heading = "Create a Thread"
 
 const Page: NextPage = () => {
    const selectedIds: any = useAppSelector((e: RootState) => e.selected)
-   const { push } = useRouter()
+   const { push } = useRouter() || ""
    const [percent, setpercent] = React.useState(0)
 
    const [toggleForm, settoggleForm] = React.useState(false)
@@ -29,7 +29,7 @@ const Page: NextPage = () => {
    const [message, setmessage] = React.useState<string>("")
    const [media, setmedia] = React.useState<any>("")
    const [loading, setloading] = React.useState<boolean>(false)
-   const { pathname } = useRouter()
+   const { pathname } = useRouter() || ""
    const dispatch = useAppDispatch()
    const queries: IQueries[] = [
       { name: "page", value: page },
