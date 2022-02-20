@@ -28,11 +28,13 @@ const FormComponent = ({
    }
    return (
       <form action="submit" onSubmit={handleSubmit} className="Forms">
-         <h1 className="text-center text-3xl font-bold text-white">{heading}</h1>
+         <h1 data-testid="formHeading" className="text-center text-3xl font-bold text-white">
+            {heading}
+         </h1>
          <input
             name="title"
             type="text"
-            placeholder="Title"
+            placeholder="formTitle"
             className="Inputs"
             value={title}
             onChange={(e: FormEvent<HTMLInputElement>) => settitle(e.currentTarget.value)}
@@ -41,7 +43,7 @@ const FormComponent = ({
             id="post"
             className="Inputs"
             name="post"
-            placeholder="Message"
+            placeholder="formMessage"
             rows={4}
             cols={30}
             value={message}
@@ -49,6 +51,7 @@ const FormComponent = ({
          ></textarea>
          <input
             value={""}
+            title="TextArea"
             className="text-white "
             type="file"
             onChange={(e: any) => handleMedia(e.target.files[0])}
