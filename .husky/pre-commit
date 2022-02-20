@@ -67,16 +67,22 @@ sudo yarn test ||
     false;
 )
 
+echo ' '
 echo '⌛⌛⌛Loading.......😅😅😅'
 echo '⌛⌛⌛Loading.......😅😅😅'
 echo '⌛⌛⌛Loading.......😅😅😅'
 
+echo ' '
 
 
 
+echo ' '
+echo ' '
 echo '✨✨✨✅✅✅✅ 👻👻👻 .....I..👽...👻👻👻 ✅✅✅✅✨✨✨'
 echo '✨✨✨✅✅✅✅ 👻👻👻 .....am..🧛...👻👻👻 ✅✅✅✅✨✨✨'
 echo '✨✨✨✅✅✅✅ 👻👻👻 .committing🩸.👻👻👻 ✅✅✅✅✨✨✨'
 echo '✨✨✨✅✅✅✅ 👻👻👻 ....this..👹...👻👻👻 ✅✅✅✅✨✨✨'
 echo '✨✨✨✅✅✅✅ 👻👻👻 .....now.🎃....👻👻👻 ✅✅✅✅✨✨✨'
 echo '🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Done 💯  🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀'
+echo ' '
+echo ' '
