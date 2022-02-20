@@ -10,6 +10,7 @@ interface Iprops {
 const Button = ({ disabled, children, type, onClick }: Iprops) => {
    return (
       <button
+         data-testid="submitBtn"
          onClick={onClick}
          disabled={disabled}
          className={`p-2 flex justify-center items-center ${

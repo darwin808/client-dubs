@@ -35,4 +35,9 @@ describe("Form component", () => {
       expect(txtArea).toBeInTheDocument()
       expect(txtArea.value).toBe("test")
    })
+   it("renders a Form button", () => {
+      const button = screen.getByTestId("submitBtn")
+      expect(button).toBeInTheDocument()
+      expect(button.textContent).toBe("submit")
+   })
 })
