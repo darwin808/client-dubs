@@ -15,11 +15,13 @@ export interface IQueries {
 }
 
 export interface IPost {
-   id: number | string
+   id: number | string | any
    title: string
    message: string
    media: string
    media_small: string
-   createdAt: string
    user_id?: string
+   page_id?: string
+   createdAt: string
+   updatedAt?: string
 }
