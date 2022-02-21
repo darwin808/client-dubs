@@ -56,7 +56,9 @@ const Post = ({ data, onClick }: IProps) => {
             <span data-testid="date" className="lg:flex xs:hidden">
                {moment(createdAt).format("MM/DD/YY (ddd) HH:mm:ss")}
             </span>
-            <span className="whitespace-nowrap">No. {id}</span>
+            <span className="whitespace-nowrap" data-testid="id">
+               No. {id}
+            </span>
             <div className="w-20">
                <Button onClick={onClick}>Reply</Button>
             </div>
@@ -68,7 +70,10 @@ const Post = ({ data, onClick }: IProps) => {
                {showMedia}
             </div>
             <div className="flex flex-1 flex-col break-all ">
-               <div className=" min-h-10rem  block  overflow-y-auto break-all p-2 text-white ">
+               <div
+                  data-testid="message"
+                  className=" min-h-10rem  block  overflow-y-auto break-all p-2 text-white "
+               >
                   {message}
                </div>
             </div>
