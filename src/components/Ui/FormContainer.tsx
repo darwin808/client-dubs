@@ -4,7 +4,7 @@ import { IFromContainer } from "../../types"
 
 const FormContainer = ({ toggle, FormProps, onClick }: IFromContainer) => {
    return (
-      <div className="FormContainer">
+      <div className="FormContainer" data-testid="formContainer">
          {toggle ? (
             <Ui.FormComponent {...FormProps} />
          ) : (

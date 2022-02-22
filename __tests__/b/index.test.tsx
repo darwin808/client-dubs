@@ -4,18 +4,7 @@ import { fireEvent, render, screen } from "@testing-library/react"
 import FormComponent from "../../src/components/Ui/FormComponent"
 import { Provider } from "react-redux"
 import { store } from "../../src/redux/store"
-
-const myMock = jest.fn()
-const FormProps = {
-   heading: "Create a Thread",
-   handleSubmit: myMock,
-   title: "/b Random",
-   settitle: jest.fn((value) => {}),
-   message: "test",
-   setmessage: myMock,
-   media: "test",
-   setmedia: myMock
-}
+import { FormProps } from "../../__mocks__/threadMock"
 
 describe("Form component", () => {
    beforeEach(() => {
