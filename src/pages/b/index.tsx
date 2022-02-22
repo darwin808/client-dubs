@@ -142,21 +142,12 @@ const Page: NextPage = () => {
       pageCount: data.lastPage
    }
 
-   const formContainer = (
-      <div className="FormContainer">
-         {toggleForm ? (
-            <Ui.FormComponent {...FormProps} />
-         ) : (
-            <Ui.StartThread title="Start a Thread" onClick={handleToggleThread} />
-         )}
-      </div>
-   )
    return (
       <div className="Page">
          <Ui.BreadCrumbs />
          {loading && <Loader percent={percent} />}
          <Ui.PageHeader {...PageHeaderProps} />
-         {formContainer}
+         <Ui.FormContainer FormProps={FormProps} toggle={toggleForm} onClick={handleToggleThread} />
          <ShowThreads threads={threads} />
          <Ui.Pagination {...PaginationProps} />
       </div>

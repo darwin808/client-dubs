@@ -10,3 +10,14 @@ export const threadMock = {
    createdAt: "2022-02-11T12:51:03.906Z",
    updatedAt: "2022-02-11T12:51:03.906Z"
 }
+const myMock = jest.fn()
+export const FormProps = {
+   heading: "Create a Thread",
+   handleSubmit: myMock,
+   title: "/b Random",
+   settitle: jest.fn((value) => {}),
+   message: "test",
+   setmessage: myMock,
+   media: "test",
+   setmedia: myMock
+}

@@ -4,6 +4,7 @@ import Pagination from "./Pagination"
 import StartThread from "./StartThread"
 import PageHeader from "./PageHeader"
 import BreadCrumbs from "./BreadCrumbs"
+import FormContainer from "./FormContainer"
 
 export const Ui = {
    FormComponent,
@@ -11,5 +12,6 @@ export const Ui = {
    Pagination,
    StartThread,
    PageHeader,
-   BreadCrumbs
+   BreadCrumbs,
+   FormContainer
 }

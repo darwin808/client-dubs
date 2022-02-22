@@ -25,3 +25,9 @@ export interface IPost {
    createdAt: string
    updatedAt?: string
 }
+
+export interface IFromContainer {
+   toggle: boolean
+   FormProps: any
+   onClick: () => void
+}

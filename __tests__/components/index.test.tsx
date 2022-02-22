@@ -1,8 +1,9 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
 import PostComponent from "../../src/components/Ui/Post"
-import { threadMock } from "../../__mocks__/threadMock"
+import { FormProps, threadMock } from "../../__mocks__/threadMock"
 import moment from "moment"
+import FormContainer from "../../src/components/Ui/FormContainer"
 
 interface IProps {
    onClick?: () => void
@@ -46,5 +47,25 @@ describe("Post component", () => {
       const btn = screen.getByTestId("submitBtn")
       expect(btn).toBeInTheDocument()
       expect(btn.textContent).toBe("Reply")
+   })
+})
+
+const FormContainerProps = {
+   toggle: false,
+   FormProps,
+   onClick: jest.fn()
+}
+describe("Post component", () => {
+   beforeEach(() => {
+      render(<FormContainer {...FormContainerProps} />)
+   })
+
+   it("renders a   form", () => {
+      const formContainer = screen.queryByTestId("formContainer")
+      expect(formContainer).toBeInTheDocument()
+   })
+   it("renders a   start a thread", () => {
+      const startThread = screen.getByText("Start a Thread")
+      expect(startThread).toBeInTheDocument()
    })
 })
