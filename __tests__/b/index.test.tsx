@@ -1,9 +1,6 @@
-/* eslint-disable no-unused-vars */
 import React from "react"
-import { fireEvent, render, screen } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import FormComponent from "../../src/components/Ui/FormComponent"
-import { Provider } from "react-redux"
-import { store } from "../../src/redux/store"
 import { FormProps } from "../../__mocks__/threadMock"
 
 describe("Form component", () => {
